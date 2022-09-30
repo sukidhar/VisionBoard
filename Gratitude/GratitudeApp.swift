@@ -11,7 +11,7 @@ import SwiftUI
 struct GratitudeApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            OnboardingSectionTitle()
         }
     }
 }

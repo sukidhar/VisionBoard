@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0A29FA2328E6E78C0046DC40 /* GratitudeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A29FA2228E6E78C0046DC40 /* GratitudeApp.swift */; };
-		0A29FA2528E6E78C0046DC40 /* OpeningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A29FA2428E6E78C0046DC40 /* OpeningView.swift */; };
 		0A29FA2728E6E78D0046DC40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A29FA2628E6E78D0046DC40 /* Assets.xcassets */; };
 		0A29FA2A28E6E78D0046DC40 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A29FA2928E6E78D0046DC40 /* Preview Assets.xcassets */; };
 		0A29FA3228E6E95F0046DC40 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 0A29FA3128E6E95F0046DC40 /* Realm */; };
@@ -31,12 +30,19 @@
 		0A29FA5728E6EE8C0046DC40 /* Inter-ExtraBoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A29FA4528E6EE8C0046DC40 /* Inter-ExtraBoldItalic.otf */; };
 		0A29FA5828E6EE8C0046DC40 /* Inter-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A29FA4628E6EE8C0046DC40 /* Inter-MediumItalic.otf */; };
 		0A29FA5928E6EE8C0046DC40 /* Inter-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A29FA4728E6EE8C0046DC40 /* Inter-LightItalic.otf */; };
+		0A29FA5C28E6F1EE0046DC40 /* StateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A29FA5B28E6F1EE0046DC40 /* StateManager.swift */; };
+		0A29FA5E28E6F65A0046DC40 /* OnboardingOpeningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A29FA5D28E6F65A0046DC40 /* OnboardingOpeningView.swift */; };
+		0A29FA6028E7016A0046DC40 /* OnboardingUsername.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A29FA5F28E7016A0046DC40 /* OnboardingUsername.swift */; };
+		0A29FA6228E70EAE0046DC40 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A29FA6128E70EAE0046DC40 /* View+Extension.swift */; };
+		0A29FA6428E714960046DC40 /* OnboardingVisionBoardTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A29FA6328E714960046DC40 /* OnboardingVisionBoardTitle.swift */; };
+		0A29FA6728E727550046DC40 /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A29FA6628E727550046DC40 /* FlowLayout.swift */; };
+		0A29FA6A28E732340046DC40 /* IdentifiableString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A29FA6928E732340046DC40 /* IdentifiableString.swift */; };
+		0A29FA6C28E73AC10046DC40 /* OnboardingSectionTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A29FA6B28E73AC10046DC40 /* OnboardingSectionTitle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0A29FA1F28E6E78C0046DC40 /* Gratitude.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gratitude.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A29FA2228E6E78C0046DC40 /* GratitudeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GratitudeApp.swift; sourceTree = "<group>"; };
-		0A29FA2428E6E78C0046DC40 /* OpeningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpeningView.swift; sourceTree = "<group>"; };
 		0A29FA2628E6E78D0046DC40 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A29FA2928E6E78D0046DC40 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0A29FA3628E6EE8B0046DC40 /* Inter-BlackItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-BlackItalic.otf"; sourceTree = "<group>"; };
@@ -58,6 +64,14 @@
 		0A29FA4628E6EE8C0046DC40 /* Inter-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-MediumItalic.otf"; sourceTree = "<group>"; };
 		0A29FA4728E6EE8C0046DC40 /* Inter-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-LightItalic.otf"; sourceTree = "<group>"; };
 		0A29FA5A28E6EEAC0046DC40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		0A29FA5B28E6F1EE0046DC40 /* StateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateManager.swift; sourceTree = "<group>"; };
+		0A29FA5D28E6F65A0046DC40 /* OnboardingOpeningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingOpeningView.swift; sourceTree = "<group>"; };
+		0A29FA5F28E7016A0046DC40 /* OnboardingUsername.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingUsername.swift; sourceTree = "<group>"; };
+		0A29FA6128E70EAE0046DC40 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
+		0A29FA6328E714960046DC40 /* OnboardingVisionBoardTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingVisionBoardTitle.swift; sourceTree = "<group>"; };
+		0A29FA6628E727550046DC40 /* FlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
+		0A29FA6928E732340046DC40 /* IdentifiableString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifiableString.swift; sourceTree = "<group>"; };
+		0A29FA6B28E73AC10046DC40 /* OnboardingSectionTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSectionTitle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,7 +109,14 @@
 				0A29FA5A28E6EEAC0046DC40 /* Info.plist */,
 				0A29FA3528E6ED4C0046DC40 /* Fonts */,
 				0A29FA2228E6E78C0046DC40 /* GratitudeApp.swift */,
-				0A29FA2428E6E78C0046DC40 /* OpeningView.swift */,
+				0A29FA5D28E6F65A0046DC40 /* OnboardingOpeningView.swift */,
+				0A29FA5F28E7016A0046DC40 /* OnboardingUsername.swift */,
+				0A29FA6328E714960046DC40 /* OnboardingVisionBoardTitle.swift */,
+				0A29FA6B28E73AC10046DC40 /* OnboardingSectionTitle.swift */,
+				0A29FA6828E7321B0046DC40 /* Models */,
+				0A29FA6128E70EAE0046DC40 /* View+Extension.swift */,
+				0A29FA5B28E6F1EE0046DC40 /* StateManager.swift */,
+				0A29FA6528E7272A0046DC40 /* Components */,
 				0A29FA2628E6E78D0046DC40 /* Assets.xcassets */,
 				0A29FA2828E6E78D0046DC40 /* Preview Content */,
 			);
@@ -133,6 +154,22 @@
 				0A29FA3C28E6EE8B0046DC40 /* Inter-ThinItalic.otf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		0A29FA6528E7272A0046DC40 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				0A29FA6628E727550046DC40 /* FlowLayout.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		0A29FA6828E7321B0046DC40 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0A29FA6928E732340046DC40 /* IdentifiableString.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,8 +267,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A29FA2528E6E78C0046DC40 /* OpeningView.swift in Sources */,
+				0A29FA5C28E6F1EE0046DC40 /* StateManager.swift in Sources */,
 				0A29FA2328E6E78C0046DC40 /* GratitudeApp.swift in Sources */,
+				0A29FA6228E70EAE0046DC40 /* View+Extension.swift in Sources */,
+				0A29FA6A28E732340046DC40 /* IdentifiableString.swift in Sources */,
+				0A29FA6028E7016A0046DC40 /* OnboardingUsername.swift in Sources */,
+				0A29FA5E28E6F65A0046DC40 /* OnboardingOpeningView.swift in Sources */,
+				0A29FA6728E727550046DC40 /* FlowLayout.swift in Sources */,
+				0A29FA6C28E73AC10046DC40 /* OnboardingSectionTitle.swift in Sources */,
+				0A29FA6428E714960046DC40 /* OnboardingVisionBoardTitle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
