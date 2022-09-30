@@ -8,17 +8,56 @@
 
 /* Begin PBXBuildFile section */
 		0A29FA2328E6E78C0046DC40 /* GratitudeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A29FA2228E6E78C0046DC40 /* GratitudeApp.swift */; };
-		0A29FA2528E6E78C0046DC40 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A29FA2428E6E78C0046DC40 /* ContentView.swift */; };
+		0A29FA2528E6E78C0046DC40 /* OpeningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A29FA2428E6E78C0046DC40 /* OpeningView.swift */; };
 		0A29FA2728E6E78D0046DC40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A29FA2628E6E78D0046DC40 /* Assets.xcassets */; };
 		0A29FA2A28E6E78D0046DC40 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A29FA2928E6E78D0046DC40 /* Preview Assets.xcassets */; };
+		0A29FA3228E6E95F0046DC40 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 0A29FA3128E6E95F0046DC40 /* Realm */; };
+		0A29FA3428E6E95F0046DC40 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0A29FA3328E6E95F0046DC40 /* RealmSwift */; };
+		0A29FA4828E6EE8C0046DC40 /* Inter-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A29FA3628E6EE8B0046DC40 /* Inter-BlackItalic.otf */; };
+		0A29FA4928E6EE8C0046DC40 /* Inter-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A29FA3728E6EE8B0046DC40 /* Inter-Bold.otf */; };
+		0A29FA4A28E6EE8C0046DC40 /* Inter-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A29FA3828E6EE8B0046DC40 /* Inter-SemiBold.otf */; };
+		0A29FA4B28E6EE8C0046DC40 /* Inter-SemiBoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A29FA3928E6EE8B0046DC40 /* Inter-SemiBoldItalic.otf */; };
+		0A29FA4C28E6EE8C0046DC40 /* Inter-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A29FA3A28E6EE8B0046DC40 /* Inter-Regular.otf */; };
+		0A29FA4D28E6EE8C0046DC40 /* Inter-ExtraLightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A29FA3B28E6EE8B0046DC40 /* Inter-ExtraLightItalic.otf */; };
+		0A29FA4E28E6EE8C0046DC40 /* Inter-ThinItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A29FA3C28E6EE8B0046DC40 /* Inter-ThinItalic.otf */; };
+		0A29FA4F28E6EE8C0046DC40 /* Inter-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A29FA3D28E6EE8B0046DC40 /* Inter-ExtraLight.otf */; };
+		0A29FA5028E6EE8C0046DC40 /* Inter-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A29FA3E28E6EE8B0046DC40 /* Inter-BoldItalic.otf */; };
+		0A29FA5128E6EE8C0046DC40 /* Inter-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A29FA3F28E6EE8B0046DC40 /* Inter-Black.otf */; };
+		0A29FA5228E6EE8C0046DC40 /* Inter-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A29FA4028E6EE8B0046DC40 /* Inter-Medium.otf */; };
+		0A29FA5328E6EE8C0046DC40 /* Inter-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A29FA4128E6EE8B0046DC40 /* Inter-Italic.otf */; };
+		0A29FA5428E6EE8C0046DC40 /* Inter-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A29FA4228E6EE8B0046DC40 /* Inter-ExtraBold.otf */; };
+		0A29FA5528E6EE8C0046DC40 /* Inter-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A29FA4328E6EE8C0046DC40 /* Inter-Light.otf */; };
+		0A29FA5628E6EE8C0046DC40 /* Inter-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A29FA4428E6EE8C0046DC40 /* Inter-Thin.otf */; };
+		0A29FA5728E6EE8C0046DC40 /* Inter-ExtraBoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A29FA4528E6EE8C0046DC40 /* Inter-ExtraBoldItalic.otf */; };
+		0A29FA5828E6EE8C0046DC40 /* Inter-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A29FA4628E6EE8C0046DC40 /* Inter-MediumItalic.otf */; };
+		0A29FA5928E6EE8C0046DC40 /* Inter-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A29FA4728E6EE8C0046DC40 /* Inter-LightItalic.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0A29FA1F28E6E78C0046DC40 /* Gratitude.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gratitude.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A29FA2228E6E78C0046DC40 /* GratitudeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GratitudeApp.swift; sourceTree = "<group>"; };
-		0A29FA2428E6E78C0046DC40 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		0A29FA2428E6E78C0046DC40 /* OpeningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpeningView.swift; sourceTree = "<group>"; };
 		0A29FA2628E6E78D0046DC40 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A29FA2928E6E78D0046DC40 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0A29FA3628E6EE8B0046DC40 /* Inter-BlackItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-BlackItalic.otf"; sourceTree = "<group>"; };
+		0A29FA3728E6EE8B0046DC40 /* Inter-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Bold.otf"; sourceTree = "<group>"; };
+		0A29FA3828E6EE8B0046DC40 /* Inter-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-SemiBold.otf"; sourceTree = "<group>"; };
+		0A29FA3928E6EE8B0046DC40 /* Inter-SemiBoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-SemiBoldItalic.otf"; sourceTree = "<group>"; };
+		0A29FA3A28E6EE8B0046DC40 /* Inter-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Regular.otf"; sourceTree = "<group>"; };
+		0A29FA3B28E6EE8B0046DC40 /* Inter-ExtraLightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ExtraLightItalic.otf"; sourceTree = "<group>"; };
+		0A29FA3C28E6EE8B0046DC40 /* Inter-ThinItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ThinItalic.otf"; sourceTree = "<group>"; };
+		0A29FA3D28E6EE8B0046DC40 /* Inter-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ExtraLight.otf"; sourceTree = "<group>"; };
+		0A29FA3E28E6EE8B0046DC40 /* Inter-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-BoldItalic.otf"; sourceTree = "<group>"; };
+		0A29FA3F28E6EE8B0046DC40 /* Inter-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Black.otf"; sourceTree = "<group>"; };
+		0A29FA4028E6EE8B0046DC40 /* Inter-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Medium.otf"; sourceTree = "<group>"; };
+		0A29FA4128E6EE8B0046DC40 /* Inter-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Italic.otf"; sourceTree = "<group>"; };
+		0A29FA4228E6EE8B0046DC40 /* Inter-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ExtraBold.otf"; sourceTree = "<group>"; };
+		0A29FA4328E6EE8C0046DC40 /* Inter-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Light.otf"; sourceTree = "<group>"; };
+		0A29FA4428E6EE8C0046DC40 /* Inter-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Thin.otf"; sourceTree = "<group>"; };
+		0A29FA4528E6EE8C0046DC40 /* Inter-ExtraBoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ExtraBoldItalic.otf"; sourceTree = "<group>"; };
+		0A29FA4628E6EE8C0046DC40 /* Inter-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-MediumItalic.otf"; sourceTree = "<group>"; };
+		0A29FA4728E6EE8C0046DC40 /* Inter-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-LightItalic.otf"; sourceTree = "<group>"; };
+		0A29FA5A28E6EEAC0046DC40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +65,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A29FA3428E6E95F0046DC40 /* RealmSwift in Frameworks */,
+				0A29FA3228E6E95F0046DC40 /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,8 +92,10 @@
 		0A29FA2128E6E78C0046DC40 /* Gratitude */ = {
 			isa = PBXGroup;
 			children = (
+				0A29FA5A28E6EEAC0046DC40 /* Info.plist */,
+				0A29FA3528E6ED4C0046DC40 /* Fonts */,
 				0A29FA2228E6E78C0046DC40 /* GratitudeApp.swift */,
-				0A29FA2428E6E78C0046DC40 /* ContentView.swift */,
+				0A29FA2428E6E78C0046DC40 /* OpeningView.swift */,
 				0A29FA2628E6E78D0046DC40 /* Assets.xcassets */,
 				0A29FA2828E6E78D0046DC40 /* Preview Content */,
 			);
@@ -65,6 +108,31 @@
 				0A29FA2928E6E78D0046DC40 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		0A29FA3528E6ED4C0046DC40 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				0A29FA3F28E6EE8B0046DC40 /* Inter-Black.otf */,
+				0A29FA3628E6EE8B0046DC40 /* Inter-BlackItalic.otf */,
+				0A29FA3728E6EE8B0046DC40 /* Inter-Bold.otf */,
+				0A29FA3E28E6EE8B0046DC40 /* Inter-BoldItalic.otf */,
+				0A29FA4228E6EE8B0046DC40 /* Inter-ExtraBold.otf */,
+				0A29FA4528E6EE8C0046DC40 /* Inter-ExtraBoldItalic.otf */,
+				0A29FA3D28E6EE8B0046DC40 /* Inter-ExtraLight.otf */,
+				0A29FA3B28E6EE8B0046DC40 /* Inter-ExtraLightItalic.otf */,
+				0A29FA4128E6EE8B0046DC40 /* Inter-Italic.otf */,
+				0A29FA4328E6EE8C0046DC40 /* Inter-Light.otf */,
+				0A29FA4728E6EE8C0046DC40 /* Inter-LightItalic.otf */,
+				0A29FA4028E6EE8B0046DC40 /* Inter-Medium.otf */,
+				0A29FA4628E6EE8C0046DC40 /* Inter-MediumItalic.otf */,
+				0A29FA3A28E6EE8B0046DC40 /* Inter-Regular.otf */,
+				0A29FA3828E6EE8B0046DC40 /* Inter-SemiBold.otf */,
+				0A29FA3928E6EE8B0046DC40 /* Inter-SemiBoldItalic.otf */,
+				0A29FA4428E6EE8C0046DC40 /* Inter-Thin.otf */,
+				0A29FA3C28E6EE8B0046DC40 /* Inter-ThinItalic.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +151,10 @@
 			dependencies = (
 			);
 			name = Gratitude;
+			packageProductDependencies = (
+				0A29FA3128E6E95F0046DC40 /* Realm */,
+				0A29FA3328E6E95F0046DC40 /* RealmSwift */,
+			);
 			productName = Gratitude;
 			productReference = 0A29FA1F28E6E78C0046DC40 /* Gratitude.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +183,9 @@
 				Base,
 			);
 			mainGroup = 0A29FA1628E6E78C0046DC40;
+			packageReferences = (
+				0A29FA3028E6E95F0046DC40 /* XCRemoteSwiftPackageReference "realm-swift" */,
+			);
 			productRefGroup = 0A29FA2028E6E78C0046DC40 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -126,7 +201,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A29FA2A28E6E78D0046DC40 /* Preview Assets.xcassets in Resources */,
+				0A29FA4928E6EE8C0046DC40 /* Inter-Bold.otf in Resources */,
+				0A29FA4D28E6EE8C0046DC40 /* Inter-ExtraLightItalic.otf in Resources */,
+				0A29FA5628E6EE8C0046DC40 /* Inter-Thin.otf in Resources */,
 				0A29FA2728E6E78D0046DC40 /* Assets.xcassets in Resources */,
+				0A29FA4A28E6EE8C0046DC40 /* Inter-SemiBold.otf in Resources */,
+				0A29FA5428E6EE8C0046DC40 /* Inter-ExtraBold.otf in Resources */,
+				0A29FA4C28E6EE8C0046DC40 /* Inter-Regular.otf in Resources */,
+				0A29FA5828E6EE8C0046DC40 /* Inter-MediumItalic.otf in Resources */,
+				0A29FA5928E6EE8C0046DC40 /* Inter-LightItalic.otf in Resources */,
+				0A29FA4F28E6EE8C0046DC40 /* Inter-ExtraLight.otf in Resources */,
+				0A29FA4828E6EE8C0046DC40 /* Inter-BlackItalic.otf in Resources */,
+				0A29FA5028E6EE8C0046DC40 /* Inter-BoldItalic.otf in Resources */,
+				0A29FA4B28E6EE8C0046DC40 /* Inter-SemiBoldItalic.otf in Resources */,
+				0A29FA5128E6EE8C0046DC40 /* Inter-Black.otf in Resources */,
+				0A29FA4E28E6EE8C0046DC40 /* Inter-ThinItalic.otf in Resources */,
+				0A29FA5728E6EE8C0046DC40 /* Inter-ExtraBoldItalic.otf in Resources */,
+				0A29FA5528E6EE8C0046DC40 /* Inter-Light.otf in Resources */,
+				0A29FA5328E6EE8C0046DC40 /* Inter-Italic.otf in Resources */,
+				0A29FA5228E6EE8C0046DC40 /* Inter-Medium.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,7 +230,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A29FA2528E6E78C0046DC40 /* ContentView.swift in Sources */,
+				0A29FA2528E6E78C0046DC40 /* OpeningView.swift in Sources */,
 				0A29FA2328E6E78C0046DC40 /* GratitudeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,6 +363,7 @@
 				DEVELOPMENT_TEAM = 7SFL7KYWRD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Gratitude/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -299,6 +393,7 @@
 				DEVELOPMENT_TEAM = 7SFL7KYWRD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Gratitude/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -339,6 +434,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0A29FA3028E6E95F0046DC40 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0A29FA3128E6E95F0046DC40 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0A29FA3028E6E95F0046DC40 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		0A29FA3328E6E95F0046DC40 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0A29FA3028E6E95F0046DC40 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0A29FA1728E6E78C0046DC40 /* Project object */;
 }
