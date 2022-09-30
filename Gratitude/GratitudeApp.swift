@@ -11,7 +11,11 @@ import SwiftUI
 struct GratitudeApp: App {
     var body: some Scene {
         WindowGroup {
-            OnboardingSectionTitle()
+            if AppManager.hasUser(){
+                HomeView(title: "")
+            }else{
+                OnboardingOpeningView()
+            }
         }
     }
 }
