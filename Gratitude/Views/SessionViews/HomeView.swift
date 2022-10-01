@@ -6,8 +6,10 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct HomeView: View {
+    @ObservedRealmObject var user : User
     var body: some View {
         NavigationView{
             GeometryReader{ _ in
@@ -39,7 +41,7 @@ struct HomeView: View {
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Text(" ")
+                    Text(user.visionBoardTitle)
                         .font(Font.custom("Inter-Bold", size: 20))
                         .padding(8)
                 }
@@ -50,6 +52,6 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        HomeView(user: .init())
     }
 }

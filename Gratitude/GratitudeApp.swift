@@ -6,18 +6,20 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 @main
-struct GratitudeApp: App {
+struct GratitudeApp: SwiftUI.App {
     @StateObject var stateManager : StateManager = .init()
     var body: some Scene {
         WindowGroup {
+            let _ = print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.path)
             switch stateManager.state{
             case .onboardingView:
                 OnboardingView()
                     .environmentObject(stateManager)
-            case .homeView:
-                HomeView()
+            case .homeView(let user):
+                HomeView(user: user)
                     .environmentObject(stateManager)
             }
         }

@@ -73,8 +73,8 @@ struct OnboardingSectionTitle: View {
             .scrollIndicators(.never)
             .frame(maxWidth: .infinity, maxHeight: 50)
             Spacer()
-            NavigationLink {
-                OnboardingSectionTitle()
+            Button {
+                stateManager.set(user: viewModel.generateUser())
             } label: {
                 Text("CONTINUE")
             }

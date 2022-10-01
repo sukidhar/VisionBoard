@@ -9,7 +9,6 @@ import SwiftUI
 import RealmSwift
 
 struct OnboardingView: View {
-    
     @StateObject var viewModel : ViewModel = .init()
     
     var body: some View {

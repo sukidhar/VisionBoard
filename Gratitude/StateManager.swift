@@ -10,23 +10,23 @@ import RealmSwift
 
 enum AppState{
     case onboardingView
-    case homeView
+    case homeView(user: User)
 }
 
 class StateManager : ObservableObject{
     @Published private(set) var state = AppState.onboardingView
     
+    var realm : Realm {
+        return try! Realm(configuration: .init(deleteRealmIfMigrationNeeded: true))
+    }
+    
     func checkState(){
-        guard let realm = try? Realm(configuration: .init(deleteRealmIfMigrationNeeded: true)) else {
-            return
-        }
-        try? realm.write({
-            realm.deleteAll()
-        })
-        if let _ = realm.objects(User.self).first{
-            state = .homeView
-        }else{
-            state = .onboardingView
+        DispatchQueue.main.async { [unowned self] in
+            if let user = realm.objects(User.self).first{
+                self.state = .homeView(user: user)
+            }else{
+                self.state = .onboardingView
+            }
         }
     }
     
@@ -35,11 +35,11 @@ class StateManager : ObservableObject{
     }
     
     func set(user: User){
-        guard let realm = try? Realm(configuration: .init(deleteRealmIfMigrationNeeded: true)) else {
-            return
-        }
         try? realm.write({
             realm.add(user)
         })
+        DispatchQueue.main.async { [unowned self] in
+            self.set(state: .homeView(user: user))
+        }
     }
 }
