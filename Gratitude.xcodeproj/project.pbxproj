@@ -41,7 +41,10 @@
 		0A29FA7328E769C20046DC40 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A29FA7228E769C20046DC40 /* User.swift */; };
 		0A29FA7528E76E0F0046DC40 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A29FA7428E76E0F0046DC40 /* Section.swift */; };
 		0A29FA7728E76E2B0046DC40 /* VBImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A29FA7628E76E2B0046DC40 /* VBImage.swift */; };
-		0A29FA7B28E778FF0046DC40 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A29FA7A28E778FF0046DC40 /* AppManager.swift */; };
+		0A29FA7F28E8023E0046DC40 /* StateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A29FA7E28E8023E0046DC40 /* StateManager.swift */; };
+		0A29FA8128E8202F0046DC40 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A29FA8028E8202F0046DC40 /* OnboardingView.swift */; };
+		0A29FA8328E83B970046DC40 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A29FA8228E83B970046DC40 /* UINavigationController+Extension.swift */; };
+		0A29FA8528E842A50046DC40 /* NavigationButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A29FA8428E842A50046DC40 /* NavigationButtonStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,7 +82,10 @@
 		0A29FA7228E769C20046DC40 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0A29FA7428E76E0F0046DC40 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		0A29FA7628E76E2B0046DC40 /* VBImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VBImage.swift; sourceTree = "<group>"; };
-		0A29FA7A28E778FF0046DC40 /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
+		0A29FA7E28E8023E0046DC40 /* StateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateManager.swift; sourceTree = "<group>"; };
+		0A29FA8028E8202F0046DC40 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		0A29FA8228E83B970046DC40 /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
+		0A29FA8428E842A50046DC40 /* NavigationButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationButtonStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,10 +123,12 @@
 				0A29FA5A28E6EEAC0046DC40 /* Info.plist */,
 				0A29FA3528E6ED4C0046DC40 /* Fonts */,
 				0A29FA2228E6E78C0046DC40 /* GratitudeApp.swift */,
-				0A29FA7A28E778FF0046DC40 /* AppManager.swift */,
+				0A29FA7E28E8023E0046DC40 /* StateManager.swift */,
 				0A29FA6D28E7413C0046DC40 /* Views */,
 				0A29FA6828E7321B0046DC40 /* Models */,
 				0A29FA6128E70EAE0046DC40 /* View+Extension.swift */,
+				0A29FA8428E842A50046DC40 /* NavigationButtonStyle.swift */,
+				0A29FA8228E83B970046DC40 /* UINavigationController+Extension.swift */,
 				0A29FA6528E7272A0046DC40 /* Components */,
 				0A29FA2628E6E78D0046DC40 /* Assets.xcassets */,
 				0A29FA2828E6E78D0046DC40 /* Preview Content */,
@@ -183,6 +191,7 @@
 		0A29FA6D28E7413C0046DC40 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0A29FA8028E8202F0046DC40 /* OnboardingView.swift */,
 				0A29FA6F28E7438C0046DC40 /* SessionViews */,
 				0A29FA6E28E741570046DC40 /* OnboardingViews */,
 			);
@@ -305,11 +314,14 @@
 			files = (
 				0A29FA7728E76E2B0046DC40 /* VBImage.swift in Sources */,
 				0A29FA2328E6E78C0046DC40 /* GratitudeApp.swift in Sources */,
+				0A29FA8328E83B970046DC40 /* UINavigationController+Extension.swift in Sources */,
+				0A29FA8528E842A50046DC40 /* NavigationButtonStyle.swift in Sources */,
+				0A29FA8128E8202F0046DC40 /* OnboardingView.swift in Sources */,
 				0A29FA6228E70EAE0046DC40 /* View+Extension.swift in Sources */,
 				0A29FA7128E7439E0046DC40 /* HomeView.swift in Sources */,
 				0A29FA6A28E732340046DC40 /* IdentifiableString.swift in Sources */,
+				0A29FA7F28E8023E0046DC40 /* StateManager.swift in Sources */,
 				0A29FA6028E7016A0046DC40 /* OnboardingUsername.swift in Sources */,
-				0A29FA7B28E778FF0046DC40 /* AppManager.swift in Sources */,
 				0A29FA5E28E6F65A0046DC40 /* OnboardingOpeningView.swift in Sources */,
 				0A29FA6728E727550046DC40 /* FlowLayout.swift in Sources */,
 				0A29FA6C28E73AC10046DC40 /* OnboardingSectionTitle.swift in Sources */,

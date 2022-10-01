@@ -9,12 +9,16 @@ import SwiftUI
 
 @main
 struct GratitudeApp: App {
+    @StateObject var stateManager : StateManager = .init()
     var body: some Scene {
         WindowGroup {
-            if AppManager.hasUser(){
-                HomeView(title: "")
-            }else{
-                OnboardingOpeningView()
+            switch stateManager.state{
+            case .onboardingView:
+                OnboardingView()
+                    .environmentObject(stateManager)
+            case .homeView:
+                HomeView()
+                    .environmentObject(stateManager)
             }
         }
     }

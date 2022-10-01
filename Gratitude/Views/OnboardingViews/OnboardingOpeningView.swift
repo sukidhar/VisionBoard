@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct OnboardingOpeningView: View {
+    let action : ()->Void
     var body: some View {
         VStack{
             Spacer()
@@ -23,7 +24,7 @@ struct OnboardingOpeningView: View {
             }
             Spacer()
             Button {
-                
+                action()
             } label: {
                 HStack{
                     Text("BUILD A VISION BOARD ") + Text(Image(systemName: "arrow.right"))
@@ -44,7 +45,7 @@ struct OnboardingOpeningView: View {
 
 struct OpeningView_Previews: PreviewProvider {
     static var previews: some View {
-        OnboardingOpeningView()
+        OnboardingOpeningView(action: {})
     }
 }
 

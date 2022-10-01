@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct HomeView: View {
-    let title : String
     var body: some View {
         NavigationView{
             GeometryReader{ _ in
@@ -33,14 +32,14 @@ struct HomeView: View {
                             
                         }
                     }
-            
+                    
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(24)
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Text(title)
+                    Text(" ")
                         .font(Font.custom("Inter-Bold", size: 20))
                         .padding(8)
                 }
@@ -51,6 +50,6 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(title: "Sukidhar's HomeView")
+        HomeView()
     }
 }

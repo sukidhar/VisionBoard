@@ -9,49 +9,21 @@ import SwiftUI
 
 struct OnboardingVisionBoardTitle: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    
-    
-    @State var isKeyboardPresented = false
-    let name : String
-    
-    @State var boardTitle : String = ""
-    
+    @EnvironmentObject var viewModel : OnboardingView.ViewModel
     
     var backButton : some View {
         Button {
-            
+            presentationMode.wrappedValue.dismiss()
         } label: {
             Image(systemName: "arrow.left")
                 .foregroundColor(.gray)
         }
     }
     
-    var continueButton : some View {
-        Button {
-            
-        } label: {
-            Text("CONTINUE")
-                .font(Font.custom("Inter-Bold", size: 14))
-                .foregroundColor(.white)
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, 14)
-                .background {
-                    Color("PrimaryColor")
-                }
-                .cornerRadius(8)
-                .padding(.bottom, isKeyboardPresented ? 24 : 0)
-                .opacity(boardTitle.isEmpty ? 0.4 : 1)
-                .disabled(boardTitle.isEmpty)
-                .animation(.easeInOut, value: isKeyboardPresented)
-                .animation(.easeInOut, value: boardTitle.isEmpty)
-        }
-    }
-    
-    
     var body: some View {
         VStack(alignment: .leading, spacing: 10){
             Text("""
-                 Hello \(name)!😊👋🏽.
+                 Hello \(viewModel.name)!😊👋🏽.
                  Let's give your vision board a name.
                  """)
             .multilineTextAlignment(.leading)
@@ -61,7 +33,7 @@ struct OnboardingVisionBoardTitle: View {
                 .multilineTextAlignment(.leading)
                 .font(Font.custom("Inter-Regular", size: 14))
                 .foregroundColor(.secondary)
-            TextField(text: $boardTitle, prompt: Text("Type to Enter")) {}
+            TextField(text: $viewModel.boardTitle, prompt: Text("Type to Enter")) {}
                 .keyboardType(.alphabet)
                 .autocorrectionDisabled()
                 .foregroundColor(Color("PrimaryColor"))
@@ -74,7 +46,7 @@ struct OnboardingVisionBoardTitle: View {
                 .padding(.vertical)
             FlowLayout(spacing: .init(width: 12, height: 12), items: generateSuggestedTitles()) { title in
                 Button {
-                    boardTitle = title.text
+                    viewModel.boardTitle = title.text
                 } label: {
                     Text(title.text)
                         .foregroundColor(.primary)
@@ -86,13 +58,18 @@ struct OnboardingVisionBoardTitle: View {
             }
             .frame(maxWidth: .infinity)
             Spacer()
-            continueButton
+            NavigationLink {
+                OnboardingSectionTitle()
+            } label: {
+                Text("CONTINUE")
+            }
+            .buttonStyle(NavigationButtonStyle())
+            .opacity(viewModel.boardTitle.isEmpty ? 0.4 : 1)
+            .disabled(viewModel.boardTitle.isEmpty)
+            .animation(.easeInOut, value: viewModel.boardTitle.isEmpty)
         }.frame(maxWidth: .infinity)
             .padding(.horizontal, 24)
             .padding(.top, 24)
-            .onReceive(keyboardPublisher) { bool in
-                isKeyboardPresented = bool
-            }
             .navigationBarBackButtonHidden()
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -102,7 +79,7 @@ struct OnboardingVisionBoardTitle: View {
     }
     
     func generateSuggestedTitles() -> [IdentifiableString]{
-        ["🕺 My Dream Life", "🎯 Vision Board \(Calendar.current.component(.year, from: Date()))", "💫 \(name)'s Dream World"].map { string in
+        ["🕺 My Dream Life", "🎯 Vision Board \(Calendar.current.component(.year, from: Date()))", "💫 \(viewModel.name)'s Dream World"].map { string in
             IdentifiableString(text: string)
         }
     }
@@ -111,7 +88,8 @@ struct OnboardingVisionBoardTitle: View {
 struct InputVBTitle_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            OnboardingVisionBoardTitle(name: "Sukidhar")
+            OnboardingVisionBoardTitle()
+                .environmentObject(OnboardingView.ViewModel())
         }
     }
 }
