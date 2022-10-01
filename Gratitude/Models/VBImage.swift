@@ -8,6 +8,7 @@
 import RealmSwift
 
 class VBImage : Object, ObjectKeyIdentifiable{
+    @Persisted(primaryKey: true) var id: ObjectId
     @Persisted var link: String
     @Persisted var caption: String
 }

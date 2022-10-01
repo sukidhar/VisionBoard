@@ -21,25 +21,18 @@ class StateManager : ObservableObject{
     }
     
     func checkState(){
-        DispatchQueue.main.async { [unowned self] in
-            if let user = realm.objects(User.self).first{
-                self.state = .homeView(user: user)
+        DispatchQueue.main.async { [weak self] in
+            if let user = self?.realm.objects(User.self).first{
+                self?.state = .homeView(user: user)
             }else{
-                self.state = .onboardingView
+                self?.state = .onboardingView
             }
         }
     }
     
     func set(state: AppState){
-        self.state = state
-    }
-    
-    func set(user: User){
-        try? realm.write({
-            realm.add(user)
-        })
-        DispatchQueue.main.async { [unowned self] in
-            self.set(state: .homeView(user: user))
+        DispatchQueue.main.async { [weak self] in
+            self?.state = state
         }
     }
 }

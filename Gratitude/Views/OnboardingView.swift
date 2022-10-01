@@ -29,22 +29,29 @@ struct OnboardingView: View {
     class ViewModel : ObservableObject{
         @Published var state : OnboardingState = .opening
         @Published var name : String = ""
-        @Published var boardTitle : String = ""
-        @Published var sectionTitle : String = ""
+        @Published var boardTitle : String = ""{
+            didSet {
+                if boardTitle.count > 30 && oldValue.count <= 30 {
+                    boardTitle = oldValue
+                }
+            }
+        }
+        
+        let user = User()
         
         func goToDetailViews(){
             state = .details
         }
         
-        func generateUser()->User{
-            let user = User()
+        func saveUser(){
             user.name = name
             user.visionBoardTitle = boardTitle
             user.sections = .init()
-            let section = Section()
-            section.title = sectionTitle
-            user.sections.append(section)
-            return user
+            let realm = try! Realm(configuration: .init(deleteRealmIfMigrationNeeded: true))
+            try? realm.write({
+                realm.add(user)
+            })
+            try? realm.commitWrite()
         }
     }
     

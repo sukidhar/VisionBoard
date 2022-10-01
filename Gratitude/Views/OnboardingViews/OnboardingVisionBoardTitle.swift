@@ -10,6 +10,9 @@ import SwiftUI
 struct OnboardingVisionBoardTitle: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var viewModel : OnboardingView.ViewModel
+    @EnvironmentObject var stateManager : StateManager
+    
+    let bgQueue = DispatchQueue(label: "com.sukidhar.bgqueue")
     
     var backButton : some View {
         Button {
@@ -59,7 +62,7 @@ struct OnboardingVisionBoardTitle: View {
             .frame(maxWidth: .infinity)
             Spacer()
             NavigationLink {
-                OnboardingSectionTitle()
+                AddSection(sectionUsage: .onboarding)
             } label: {
                 Text("CONTINUE")
             }
@@ -75,6 +78,9 @@ struct OnboardingVisionBoardTitle: View {
                 ToolbarItem(placement: .navigationBarLeading) {
                     backButton
                 }
+            }
+            .onDisappear {
+                viewModel.saveUser()
             }
     }
     

@@ -10,7 +10,12 @@ import RealmSwift
 
 @main
 struct GratitudeApp: SwiftUI.App {
-    @StateObject var stateManager : StateManager = .init()
+    @ObservedObject var stateManager = StateManager()
+    
+    init() {
+        stateManager.checkState()
+    }
+    
     var body: some Scene {
         WindowGroup {
             let _ = print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.path)

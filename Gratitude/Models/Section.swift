@@ -8,6 +8,7 @@
 import RealmSwift
 
 class Section : Object, ObjectKeyIdentifiable{
+    @Persisted(primaryKey: true) var id: ObjectId
     @Persisted var title: String
     @Persisted var images: List<VBImage>
 }

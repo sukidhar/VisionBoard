@@ -6,14 +6,21 @@
 //
 
 import SwiftUI
+import RealmSwift
 
-struct OnboardingSectionTitle: View {
+enum SectionUsageMode {
+    case onboarding
+    case home
+}
+
+struct AddSection: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var viewModel : OnboardingView.ViewModel
     @EnvironmentObject var stateManager: StateManager
     
-    @State var isKeyboardPresented = false
+    @State var sectionTitle : String = ""
     
+    let sectionUsage : SectionUsageMode
     
     var backButton : some View {
         Button {
@@ -37,15 +44,12 @@ struct OnboardingSectionTitle: View {
                 .multilineTextAlignment(.leading)
                 .font(Font.custom("Inter-Regular", size: 14))
                 .foregroundColor(.secondary)
-            TextField(text: $viewModel.sectionTitle, prompt: Text("Type to Enter")) {}
+            TextField(text: $sectionTitle, prompt: Text("Type to Enter")) {}
                 .keyboardType(.alphabet)
                 .autocorrectionDisabled()
                 .foregroundColor(Color("PrimaryColor"))
                 .font(Font.custom("Inter-Bold", size: 20))
                 .padding(.vertical)
-                .onReceive(keyboardPublisher) { bool in
-                    isKeyboardPresented = bool
-                }
             Text("or pick one from below")
                 .multilineTextAlignment(.leading)
                 .font(Font.custom("Inter-Regular", size: 14))
@@ -54,7 +58,7 @@ struct OnboardingSectionTitle: View {
             ScrollView(.horizontal){
                 FlowLayout(spacing: .init(width: 12, height: 12), items: generateSuggestedTitles()) { title in
                     Button {
-                        viewModel.sectionTitle = title.text
+                        sectionTitle = title.text
                     } label: {
                         Text(title.text)
                             .foregroundColor(.secondary)
@@ -74,14 +78,27 @@ struct OnboardingSectionTitle: View {
             .frame(maxWidth: .infinity, maxHeight: 50)
             Spacer()
             Button {
-                stateManager.set(user: viewModel.generateUser())
+                let section = Section()
+                section.title = sectionTitle
+                guard let user = stateManager.realm.objects(User.self).first else{
+                    return
+                }
+                try? stateManager.realm.write({
+                    user.sections.append(section)
+                })
+                switch sectionUsage {
+                case .onboarding:
+                    stateManager.set(state: .homeView(user: user))
+                case .home:
+                    presentationMode.wrappedValue.dismiss()
+                }
             } label: {
                 Text("CONTINUE")
             }
             .buttonStyle(NavigationButtonStyle())
-            .opacity(viewModel.sectionTitle.isEmpty ? 0.4 : 1)
-            .disabled(viewModel.sectionTitle.isEmpty)
-            .animation(.easeInOut, value: viewModel.sectionTitle.isEmpty)
+            .opacity(sectionTitle.isEmpty ? 0.4 : 1)
+            .disabled(sectionTitle.isEmpty)
+            .animation(.easeInOut, value: sectionTitle.isEmpty)
         }.frame(maxWidth: .infinity)
             .padding(.horizontal, 24)
             .padding(.top, 24)
@@ -103,7 +120,7 @@ struct OnboardingSectionTitle: View {
 struct OnboardingSectionTitle_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView{
-            OnboardingSectionTitle()
+            AddSection(sectionUsage: .onboarding)
                 .environmentObject(OnboardingView.ViewModel())
         }
     }
