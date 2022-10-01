@@ -21,12 +21,10 @@ class StateManager : ObservableObject{
     }
     
     func checkState(){
-        DispatchQueue.main.async { [weak self] in
-            if let user = self?.realm.objects(User.self).first{
-                self?.state = .homeView(user: user)
-            }else{
-                self?.state = .onboardingView
-            }
+        if let user = self.realm.objects(User.self).first{
+            self.state = .homeView(user: user)
+        }else{
+            self.state = .onboardingView
         }
     }
     

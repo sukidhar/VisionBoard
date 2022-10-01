@@ -45,6 +45,10 @@
 		0A29FA8128E8202F0046DC40 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A29FA8028E8202F0046DC40 /* OnboardingView.swift */; };
 		0A29FA8328E83B970046DC40 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A29FA8228E83B970046DC40 /* UINavigationController+Extension.swift */; };
 		0A29FA8528E842A50046DC40 /* NavigationButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A29FA8428E842A50046DC40 /* NavigationButtonStyle.swift */; };
+		0A29FA8728E890E90046DC40 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A29FA8628E890E90046DC40 /* SectionView.swift */; };
+		0A29FA8928E896BA0046DC40 /* ImageGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A29FA8828E896BA0046DC40 /* ImageGalleryView.swift */; };
+		0A29FA8B28E8998F0046DC40 /* ImagePickerVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A29FA8A28E8998F0046DC40 /* ImagePickerVIew.swift */; };
+		0A29FA8D28E8B4A30046DC40 /* ImageSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A29FA8C28E8B4A30046DC40 /* ImageSearchView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +90,10 @@
 		0A29FA8028E8202F0046DC40 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		0A29FA8228E83B970046DC40 /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
 		0A29FA8428E842A50046DC40 /* NavigationButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationButtonStyle.swift; sourceTree = "<group>"; };
+		0A29FA8628E890E90046DC40 /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
+		0A29FA8828E896BA0046DC40 /* ImageGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGalleryView.swift; sourceTree = "<group>"; };
+		0A29FA8A28E8998F0046DC40 /* ImagePickerVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerVIew.swift; sourceTree = "<group>"; };
+		0A29FA8C28E8B4A30046DC40 /* ImageSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSearchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +181,8 @@
 			isa = PBXGroup;
 			children = (
 				0A29FA6628E727550046DC40 /* FlowLayout.swift */,
+				0A29FA8828E896BA0046DC40 /* ImageGalleryView.swift */,
+				0A29FA8A28E8998F0046DC40 /* ImagePickerVIew.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -213,6 +223,8 @@
 			children = (
 				0A29FA7028E7439E0046DC40 /* HomeView.swift */,
 				0A29FA6B28E73AC10046DC40 /* AddSection.swift */,
+				0A29FA8628E890E90046DC40 /* SectionView.swift */,
+				0A29FA8C28E8B4A30046DC40 /* ImageSearchView.swift */,
 			);
 			path = SessionViews;
 			sourceTree = "<group>";
@@ -315,7 +327,10 @@
 				0A29FA7728E76E2B0046DC40 /* VBImage.swift in Sources */,
 				0A29FA2328E6E78C0046DC40 /* GratitudeApp.swift in Sources */,
 				0A29FA8328E83B970046DC40 /* UINavigationController+Extension.swift in Sources */,
+				0A29FA8B28E8998F0046DC40 /* ImagePickerVIew.swift in Sources */,
+				0A29FA8D28E8B4A30046DC40 /* ImageSearchView.swift in Sources */,
 				0A29FA8528E842A50046DC40 /* NavigationButtonStyle.swift in Sources */,
+				0A29FA8928E896BA0046DC40 /* ImageGalleryView.swift in Sources */,
 				0A29FA8128E8202F0046DC40 /* OnboardingView.swift in Sources */,
 				0A29FA6228E70EAE0046DC40 /* View+Extension.swift in Sources */,
 				0A29FA7128E7439E0046DC40 /* HomeView.swift in Sources */,
@@ -323,6 +338,7 @@
 				0A29FA7F28E8023E0046DC40 /* StateManager.swift in Sources */,
 				0A29FA6028E7016A0046DC40 /* OnboardingUsername.swift in Sources */,
 				0A29FA5E28E6F65A0046DC40 /* OnboardingOpeningView.swift in Sources */,
+				0A29FA8728E890E90046DC40 /* SectionView.swift in Sources */,
 				0A29FA6728E727550046DC40 /* FlowLayout.swift in Sources */,
 				0A29FA6C28E73AC10046DC40 /* AddSection.swift in Sources */,
 				0A29FA7528E76E0F0046DC40 /* Section.swift in Sources */,

@@ -39,7 +39,7 @@ struct HomeView: View {
                                         Text(section.title)
                                         Spacer()
                                         NavigationLink {
-                                            
+                                            SectionView(section: section)
                                         } label: {
                                             Image("Pencil")
                                         }

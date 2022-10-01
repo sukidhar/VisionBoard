@@ -28,7 +28,6 @@ struct OnboardingUsername: View {
                     .font(Font.custom("Inter-Regular", size: 14))
                     .foregroundColor(.secondary)
                 TextField(text: $viewModel.name, prompt: Text("Type to Enter")) {}
-                    .keyboardType(.alphabet)
                     .autocorrectionDisabled()
                     .foregroundColor(Color("PrimaryColor"))
                     .font(Font.custom("Inter-Bold", size: 20))
