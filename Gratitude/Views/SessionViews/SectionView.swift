@@ -132,7 +132,7 @@ struct SectionView: View {
                         }
                         .cornerRadius(8)
                         Button {
-                            
+                            presentationMode.wrappedValue.dismiss()
                         } label: {
                             Text("DONE ") + Text(Image(systemName: "checkmark"))
                         }

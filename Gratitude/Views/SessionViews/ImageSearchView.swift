@@ -117,7 +117,7 @@ struct ImageSearchView: View {
                                         LazyHStack(spacing: 1) {
                                             ForEach(viewModel.selectedImages) { image in
                                                 Color.black
-                                                    .frame(width: 56)
+                                                    .frame(width: 56, height:56)
                                                     .overlay {
                                                         VBImageViewer(image: image)
                                                     }
@@ -125,7 +125,8 @@ struct ImageSearchView: View {
                                             }
                                         }
                                     }
-                                    .padding()
+                                    .padding(.horizontal)
+                                    .padding(.bottom)
                                     .scrollIndicators(.never)
                                     Spacer(minLength: 0)
                                     Button {
@@ -140,7 +141,8 @@ struct ImageSearchView: View {
                                     } label: {
                                         Image("ArrowCircleRight")
                                     }
-                                    .padding()
+                                    .padding(.horizontal)
+                                    .padding(.bottom)
                                 }
                             }
                             .frame(height: 100)
