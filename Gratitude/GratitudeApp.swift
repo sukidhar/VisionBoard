@@ -7,12 +7,16 @@
 
 import SwiftUI
 import RealmSwift
+import Kingfisher
 
 @main
 struct GratitudeApp: SwiftUI.App {
     @ObservedObject var stateManager = StateManager()
+    @ObservedResults(User.self) var users
     
     init() {
+        ImageCache.default.diskStorage.config.sizeLimit = 1024 * 1024 * 500
+        ImageCache.default.memoryStorage.config.totalCostLimit = 1024 * 1024 * 500
         stateManager.checkState()
     }
     
@@ -23,8 +27,8 @@ struct GratitudeApp: SwiftUI.App {
             case .onboardingView:
                 OnboardingView()
                     .environmentObject(stateManager)
-            case .homeView(let user):
-                HomeView(user: user)
+            case .homeView:
+                HomeView(user: users.first!)
                     .environmentObject(stateManager)
             }
         }

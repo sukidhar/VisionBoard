@@ -14,7 +14,7 @@ struct ImageGalleryView: UIViewControllerRepresentable {
     
     func makeUIViewController(context: Context) -> PHPickerViewController {
         var config = PHPickerConfiguration()
-        config.selectionLimit = max(0, limit - images.count)
+        config.selectionLimit = max(0, limit)
         config.filter = .images
         let picker = PHPickerViewController(configuration: config)
         picker.delegate = context.coordinator

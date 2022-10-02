@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Combine
+import RealmSwift
 import Kingfisher
 
 
@@ -14,6 +15,15 @@ struct ImageSearchView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     @StateObject var viewModel = ViewModel()
+    
+    @State var isPresentingActionSheet = false
+    @State var isPresentingCamera = false
+    @State var isPresentingGallery = false
+    @State var newImage : UIImage?
+    @State var galleryImages: [UIImage] = []
+    
+    @ObservedRealmObject var section: Section
+    @EnvironmentObject var stateManger : StateManager
     
     var backButton : some View {
         Button {
@@ -26,7 +36,7 @@ struct ImageSearchView: View {
     
     var body: some View {
         GeometryReader{ geometry in
-            VStack{
+            VStack(spacing: 0){
                 HStack{
                     Text("Powered by Pexels™")
                         .font(Font.custom("Inter-Medium", size: 14))
@@ -44,63 +54,125 @@ struct ImageSearchView: View {
                             .foregroundColor(.secondary)
                     }
                 }
+                .frame(height: 24)
                 .padding(.horizontal, 24)
                 .padding(.top, 4)
                 .padding(.bottom, 6)
-                GeometryReader{ geometry in
-                    ScrollView{
-                        LazyVGrid(columns: [.init(.fixed(geometry.size.width/2), spacing: 1),.init(.fixed(geometry.size.width/2), spacing: 1)], spacing: 1) {
-                            ForEach(Array(viewModel.searchResultImages.enumerated()), id: \.1.self) {
-                                (index,link) in
-                                if let resource = getImageResource(link) {
-                                    ZStack{
-                                        KFImage(source: .network(resource))
-                                            .diskStoreWriteOptions(.completeFileProtection)
-                                            .placeholder({ _ in
-                                                Color.secondary.opacity(0.3).frame(height: geometry.size.width/2)
-                                                    .redacted(reason: .placeholder)
-                                                    .shimmer()
-                                            })
-                                            .retry(maxCount: 5, interval: .seconds(5))
-                                            .resizable()
-                                            .aspectRatio(1, contentMode: .fit)
-                                            .onAppear {
-                                                if index == viewModel.searchResultImages.count - 1 {
-                                                    print("can query")
-                                                    if viewModel.pageNumber * 15 < viewModel.maxResults{
-                                                        viewModel.pageNumber += 1
-                                                        viewModel.performSearchRequest()
+                GeometryReader{ scrollGeometry in
+                    VStack(spacing: 0){
+                        ScrollView{
+                            LazyVGrid(columns: [.init(.fixed(scrollGeometry.size.width/2-0.5), spacing: 1),.init(.fixed(scrollGeometry.size.width/2-0.5), spacing: 1)], spacing: 1) {
+                                ForEach(Array(viewModel.searchResultImages.enumerated()), id: \.1.self) {
+                                    (index,link) in
+                                    if let resource = viewModel.getImageResource(link) {
+                                        ZStack{
+                                            KFImage(source: .network(resource))
+                                                .diskStoreWriteOptions(.completeFileProtection)
+                                                .placeholder({ _ in
+                                                    Color.secondary.opacity(0.3).frame(height: scrollGeometry.size.width/2)
+                                                        .redacted(reason: .placeholder)
+                                                        .shimmer()
+                                                })
+                                                .retry(maxCount: 5, interval: .seconds(5))
+                                                .resizable()
+                                                .aspectRatio(1, contentMode: .fit)
+                                                .onAppear {
+                                                    if index == viewModel.searchResultImages.count - 1 {
+                                                        print("can query")
+                                                        if viewModel.pageNumber * 15 < viewModel.maxResults{
+                                                            viewModel.pageNumber += 1
+                                                            viewModel.performSearchRequest()
+                                                        }
                                                     }
                                                 }
-                                            }
-                                            .onDisappear {
-                                                KingfisherManager.shared.cache.removeImage(forKey: link, fromDisk: false)
-                                            }
-                                            .onTapGesture {
-                                                if viewModel.selectedImages.count < 5{
-                                                    let vbImage = VBImage()
-                                                    vbImage.link = link
-                                                    vbImage.isLocal = false
-                                                    viewModel.selectedImages.append(vbImage)
+                                                .onDisappear {
+                                                    KingfisherManager.shared.cache.removeImage(forKey: link, fromDisk: false)
                                                 }
-                                            }
-                                        if isSelected(link: link){
-                                            Color.gray
+                                                .onTapGesture {
+                                                    if viewModel.selectedImages.count < 5{
+                                                        viewModel.selectImage(link: link)
+                                                    }
+                                                }
+                                            if isSelected(link: link){
+                                                ZStack{
+                                                    Color.black.opacity(0.2)
+                                                    Image("Check")
+                                                }
                                                 .onTapGesture {
                                                     viewModel.selectedImages = viewModel.selectedImages.filter({ vbImage in
                                                         vbImage.link != link
                                                     })
                                                 }
+                                            }
                                         }
                                     }
                                 }
                             }
                         }
+                        .scrollIndicators(.never)
+                        if viewModel.selectedImages.count > 0 {
+                            GeometryReader{ hGeometry in
+                                HStack(spacing: 0){
+                                    ScrollView(.horizontal){
+                                        LazyHStack(spacing: 1) {
+                                            ForEach(viewModel.selectedImages) { image in
+                                                Color.black
+                                                    .frame(width: 56)
+                                                    .overlay {
+                                                        VBImageViewer(image: image)
+                                                    }
+                                                    .clipped()
+                                            }
+                                        }
+                                    }
+                                    .padding()
+                                    .scrollIndicators(.never)
+                                    Spacer(minLength: 0)
+                                    Button {
+                                        let realm = stateManger.realm
+                                            viewModel.selectedImages.forEach { image in
+                                                try? realm.write({
+                                                    $section.images.append(image)
+                                                })
+                                            }
+                                            try? realm.commitWrite()
+                                        presentationMode.wrappedValue.dismiss()
+                                    } label: {
+                                        Image("ArrowCircleRight")
+                                    }
+                                    .padding()
+                                }
+                            }
+                            .frame(height: 100)
+                            .frame(maxWidth: .infinity)
+                            .background {
+                                Color.black
+                            }
+                        }
                     }
-                    .scrollIndicators(.never)
                 }
             }
         }
+        .confirmationDialog("Choose a method", isPresented: $isPresentingActionSheet, actions: {
+            Button {
+                isPresentingCamera.toggle()
+            } label: {
+                Text("Camera")
+            }
+            Button {
+                isPresentingGallery.toggle()
+            } label: {
+                Text("Gallery")
+            }
+            Button("Cancel", role: .cancel) {}
+        })
+        .fullScreenCover(isPresented: $isPresentingCamera, content: {
+            ImagePickerView(capturedImage: $newImage)
+        })
+        .fullScreenCover(isPresented: $isPresentingGallery, content: {
+            ImageGalleryView(images: $galleryImages, limit: 5 - viewModel.selectedImages.count)
+        })
+        .edgesIgnoringSafeArea(.bottom)
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden()
         .toolbar {
@@ -110,8 +182,12 @@ struct ImageSearchView: View {
             ToolbarItem(placement: .principal) {
                 HStack{
                     TextField(text: $viewModel.searchText, prompt: Text("Type to Enter")) {}
+                        .keyboardType(UIKeyboardType.webSearch)
                         .font(Font.custom("Inter-Regular", size: 14))
-                        .padding(.leading, 9)
+                        .padding(9)
+                        .onSubmit {
+                            viewModel.performSearchRequest()
+                        }
                     Button {
                         viewModel.performSearchRequest()
                     } label: {
@@ -125,7 +201,7 @@ struct ImageSearchView: View {
             }
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    
+                    isPresentingActionSheet.toggle()
                 } label: {
                     Image("Camera")
                         .padding(9)
@@ -144,6 +220,23 @@ struct ImageSearchView: View {
         .onDisappear {
             KingfisherManager.shared.cache.clearMemoryCache()
         }
+        .onChange(of: newImage) { _ in
+            if let image = newImage, let link = viewModel.saveImage(image: image){
+                viewModel.selectImage(link: link, isLocal: true)
+            }
+            self.newImage = nil
+        }
+        .onChange(of: galleryImages) { images in
+            images.forEach { image in
+                if let link = viewModel.saveImage(image: image){
+                    viewModel.selectImage(link: link, isLocal: true)
+                }
+            }
+            galleryImages = []
+        }
+        .onAppear {
+            viewModel.selectedImages = section.images.map { $0 }
+        }
     }
     
     func isSelected(link: String)->Bool{
@@ -152,14 +245,7 @@ struct ImageSearchView: View {
         }
     }
     
-    func getImageResource(_ link: String) -> ImageResource?{
-        guard let url = URL(string: link) else {
-            return nil
-        }
-        return .init(downloadURL: url, cacheKey: link)
-    }
-    
-    class ViewModel : ObservableObject{
+    class ViewModel : ImageHelper, ObservableObject{
         @Published var searchText = ""
         @Published var searchResultImages = [String]()
         @Published var pageNumber = 1
@@ -188,6 +274,13 @@ struct ImageSearchView: View {
             urlRequest.addValue(apiKey, forHTTPHeaderField: "Authorization")
             urlRequest.httpMethod = "get"
             return urlRequest
+        }
+        
+        func selectImage(link: String, isLocal: Bool = false){
+            let vbImage = VBImage()
+            vbImage.link = link
+            vbImage.isLocal = isLocal
+            selectedImages.append(vbImage)
         }
         
         func performSearchRequest(){
@@ -228,7 +321,6 @@ struct ImageSearchView: View {
                 .map {[weak self] result in
                     self?.maxResults = result.totalResults
                     return result.photos.map { photo in
-                        print(photo.src.original)
                         return photo.src.original
                     }
                 }
@@ -246,7 +338,8 @@ struct ImageSearchView: View {
 struct ImageSearchView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ImageSearchView()
+            ImageSearchView(section: .init())
+                .environmentObject(StateManager())
         }
     }
 }

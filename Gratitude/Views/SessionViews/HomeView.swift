@@ -7,9 +7,14 @@
 
 import SwiftUI
 import RealmSwift
+import Kingfisher
 
 struct HomeView: View {
+    
     @ObservedRealmObject var user : User
+    
+    @StateObject var viewModel = ViewModel()
+    
     var body: some View {
         NavigationView{
             GeometryReader{ _ in
@@ -29,7 +34,6 @@ struct HomeView: View {
                         .padding(.horizontal, 24)
                         Spacer()
                     }
-                    
                     ScrollView{
                         LazyVStack(spacing: 20){
                             ForEach(user.sections, id: \.id) {
@@ -40,6 +44,9 @@ struct HomeView: View {
                                         Spacer()
                                         NavigationLink {
                                             SectionView(section: section)
+                                                .onAppear{
+                                                    print(section)
+                                                }
                                         } label: {
                                             Image("Pencil")
                                         }
@@ -57,16 +64,138 @@ struct HomeView: View {
                                                     Color("JournalBG4")
                                                 }
                                             }
-                                        }.frame(maxWidth: .infinity, idealHeight: 130, maxHeight: 130)
-                                            .cornerRadius(9.5)
+                                        }
+                                        .frame(height: 130)
+                                        .cornerRadius(9.5)
                                     }else{
-                                        HStack{
-                                            Text("f")
-                                        }.frame(maxWidth: .infinity, idealHeight: 130, maxHeight: 130)
-                                            .background {
-                                                Color.blue
+                                        if section.images.count == 1{
+                                            HStack(spacing: 4){
+                                                Color("JournalBG")
+                                                    .overlay {
+                                                        VBImageViewer(image: section.images[0])
+                                                    }
+                                                    .clipped()
                                             }
+                                            .frame(height: 130)
+                                            .frame(maxWidth: .infinity)
                                             .cornerRadius(9.5)
+                                            .zIndex(-.infinity)
+                                        }
+                                        else if section.images.count == 2 {
+                                            HStack(spacing: 4){
+                                                Color("JournalBG")
+                                                    .overlay {
+                                                        VBImageViewer(image: section.images[0])
+                                                    }
+                                                    .clipped()
+                                                Color("JournalBG2")
+                                                    .overlay {
+                                                        VBImageViewer(image: section.images[1])
+                                                    }
+                                                    .clipped()
+                                            }
+                                            .frame(height: 130)
+                                            .frame(maxWidth: .infinity)
+                                            .cornerRadius(9.5)
+                                            .zIndex(-.infinity)
+                                        }
+                                        else if section.images.count == 3{
+                                            HStack(spacing: 4){
+                                                Color("JournalBG")
+                                                    .overlay {
+                                                        VBImageViewer(image: section.images[0])
+                                                    }
+                                                    .clipped()
+                                                VStack(spacing: 4){
+                                                    Color("JournalBG")
+                                                        .overlay {
+                                                            VBImageViewer(image: section.images[1])
+                                                        }
+                                                        .clipped()
+                                                    Color("JournalBG")
+                                                        .overlay {
+                                                            VBImageViewer(image: section.images[2])
+                                                        }
+                                                        .clipped()
+                                                }
+                                            }
+                                            .frame(height: 130)
+                                            .frame(maxWidth: .infinity)
+                                            .cornerRadius(9.5)
+                                            .zIndex(-.infinity)
+                                        }else if section.images.count == 4{
+                                            GeometryReader{
+                                                geo in
+                                                HStack(spacing: 3.8){
+                                                    VStack{
+                                                        Color("JournalBG")
+                                                            .overlay {
+                                                                VBImageViewer(image: section.images[0])
+                                                            }
+                                                    }.frame(width: geo.size.width * 0.37)
+                                                        .clipped()
+                                                    Color("JournalBG2")
+                                                        .overlay {
+                                                            VBImageViewer(image: section.images[1])
+                                                        }
+                                                        .clipped()
+                                                    VStack(spacing: 3.8){
+                                                        Color("JournalBG3")
+                                                            .overlay {
+                                                                VBImageViewer(image: section.images[2])
+                                                            }
+                                                            .clipped()
+                                                        Color("JournalBG4")
+                                                            .overlay {
+                                                                VBImageViewer(image: section.images[3])
+                                                            }
+                                                            .clipped()
+                                                    }
+                                                }
+                                            }
+                                            .frame(height: 130)
+                                            .cornerRadius(9.5)
+                                            .zIndex(-.infinity)
+                                        }
+                                        else{
+                                            HStack(spacing: 4){
+                                                VStack(spacing: 4){
+                                                    Color("JournalBG")
+                                                        .overlay {
+                                                            VBImageViewer(image: section.images[0])
+                                                        }
+                                                        .clipped()
+                                                    Color("JournalBG2")
+                                                        .overlay {
+                                                            VBImageViewer(image: section.images[1])
+                                                        }
+                                                        .clipped()
+                                                }
+                                                VStack(spacing: 4){
+                                                    Color("JournalBG3")
+                                                        .overlay {
+                                                            VBImageViewer(image: section.images[2])
+                                                        }
+                                                        .clipped()
+                                                    VStack(spacing: 4){
+                                                        Color("JournalBG4")
+                                                            .overlay {
+                                                                VBImageViewer(image: section.images[3])
+                                                            }
+                                                            .clipped()
+                                                        Color("JournalBG")
+                                                            .overlay {
+                                                                VBImageViewer(image: section.images[4])
+                                                            }
+                                                            .clipped()
+                                                    }
+                                                }
+                                            }
+                                            .frame(idealHeight: 260, maxHeight: 260)
+                                            .cornerRadius(9.5)
+                                            .clipped()
+                                            .zIndex(-.infinity)
+                                        }
                                     }
                                 }
                             }
@@ -86,6 +215,10 @@ struct HomeView: View {
             }
         }
     }
+    
+    class ViewModel : ImageHelper,ObservableObject{
+        
+    }
 }
 
 struct HomeView_Previews: PreviewProvider {
@@ -103,5 +236,26 @@ struct HomeView_Previews: PreviewProvider {
             return user
         }()
         return HomeView(user: user)
+    }
+}
+
+struct VBImageViewer : View{
+    let image: VBImage
+    let helper = ImageHelper()
+    var body: some View {
+        if image.isLocal{
+            if let image = helper.getSavedImage(named: image.link) {
+                Image(uiImage: image)
+                    .resizable()
+                    .aspectRatio(1, contentMode: .fill)
+            }
+        }
+        else{
+            if let resource = helper.getImageResource(image.link) {
+                KFImage(source: Source.network(resource))
+                    .resizable()
+                    .aspectRatio(1, contentMode: .fill)
+            }
+        }
     }
 }

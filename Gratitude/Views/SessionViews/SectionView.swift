@@ -7,9 +7,11 @@
 
 import SwiftUI
 import RealmSwift
+import Kingfisher
 
 struct SectionView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @EnvironmentObject var stateManager : StateManager
     
     var backButton : some View {
         Button {
@@ -19,71 +21,142 @@ struct SectionView: View {
                 .foregroundColor(.gray)
         }
     }
+    @StateObject var viewModel = ViewModel()
     
     @ObservedRealmObject var section : Section
     
     var body: some View {
-        VStack(spacing: 20){
+        ZStack{
             if section.images.isEmpty{
-                Image("SectionEmpty")
-                Text("Start manifesting your \(section.title)")
-                    .font(Font.custom("Inter-Bold", size: 20))
-                    .multilineTextAlignment(.center)
-                    .padding(3)
-                NavigationLink {
-                    ImageSearchView()
-                } label: {
-                    Text(Image(systemName: "camera")) + Text("ADD PHOTOS")
-                }.font(Font.custom("Inter-Bold", size: 14))
-                    .foregroundColor(.white)
-                    .padding(.vertical, 14)
-                    .padding(.horizontal, 19)
-                    .background {
-                        Color("PrimaryColor")
-                    }
-                    .cornerRadius(8)
-            }else{
-                LazyVStack(spacing: 20){
-                    
-                }
-            }
-        }.padding(.horizontal, 24)
-            .navigationBarBackButtonHidden()
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    backButton
-                }
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Text(section.title)
+                VStack{
+                    Image("SectionEmpty")
+                    Text("Start manifesting your \(section.title)")
                         .font(Font.custom("Inter-Bold", size: 20))
                         .multilineTextAlignment(.center)
+                        .padding(3)
+                    NavigationLink {
+                        ImageSearchView(section: section)
+                    } label: {
+                        Text(Image(systemName: "camera")) + Text("ADD PHOTOS")
+                    }.font(Font.custom("Inter-Bold", size: 14))
+                        .foregroundColor(.white)
+                        .padding(.vertical, 14)
+                        .padding(.horizontal, 19)
+                        .background {
+                            Color("PrimaryColor")
+                        }
+                        .cornerRadius(8)
+                }
+                .padding(24)
+            }else{
+                VStack{
+                    GeometryReader{ geometry in
+                        ScrollView{
+                            LazyVStack(spacing: 20){
+                                ForEach(section.images) {
+                                    image in
+                                    VStack{
+                                        GeometryReader{ innergeo in
+                                            ZStack{
+                                                if image.isLocal{
+                                                    if let image = viewModel.getSavedImage(named: image.link) {
+                                                        Image(uiImage: image)
+                                                            .resizable()
+                                                            .scaledToFill()
+                                                            .frame(height: 150)
+                                                            .cornerRadius(12)
+                                                    }
+                                                }
+                                                else{
+                                                    if let resource = viewModel.getImageResource(image.link) {
+                                                        KFImage(source: Source.network(resource))
+                                                            .resizable()
+                                                            .scaledToFill()
+                                                            .frame(height: 160)
+                                                            .cornerRadius(12)
+                                                    }
+                                                }
+                                            }
+                                            .padding(.horizontal, 24)
+                                            .padding(.vertical, 5)
+                                            .overlay {
+                                                Button {
+                                                    let realm = stateManager.realm
+                                                    if let index = section.images.map({ $0 }).enumerated().first(where: { (index,sImage) in
+                                                        sImage.id == image.id
+                                                    })?.offset{
+                                                        try? realm.write({
+                                                            $section.images.remove(at: index)
+                                                        })
+                                                        try? realm.commitWrite()
+                                                    }
+                                                } label: {
+                                                    ZStack{
+                                                        Color("SectionImageDeleteBG")
+                                                        Text("-")
+                                                            .font(Font.custom("Inter-Bold", size: 20))
+                                                            .offset(y: -1)
+                                                            .foregroundColor(Color(.systemBackground))
+                                                    }
+                                                }
+                                                .frame(width: 20, height: 20)
+                                                .cornerRadius(10)
+                                                .position(.init(x: innergeo.frame(in: .local).width - 26, y: innergeo.frame(in: .local).minX + 7))
+                                            }
+                                        }
+                                        .frame(height: 160)
+                                        
+                                        Text("Add a caption")
+                                            .font(Font.custom("Inter-Regular", size: 14))
+                                            .foregroundColor(Color("SectionSecondaryAccent"))
+                                            .multilineTextAlignment(.center)
+                                            .padding(.horizontal, 24)
+                                            .padding(.vertical, 6)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    HStack(spacing: 10){
+                        NavigationLink {
+                            ImageSearchView(section: section)
+                        } label: {
+                            Text(Image(systemName: "camera")) + Text(" ADD PHOTO")
+                        }
+                        .font(Font.custom("Inter-Bold", size: 14))
+                        .foregroundColor(.primary)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 14)
+                        .background {
+                            Color("SectionAddButtonBG")
+                        }
+                        .cornerRadius(8)
+                        Button {
+                            
+                        } label: {
+                            Text("DONE ") + Text(Image(systemName: "checkmark"))
+                        }
+                        .buttonStyle(NavigationButtonStyle())
+                    }
+                    .padding(.horizontal, 24)
                 }
             }
-    }
-    
-    @discardableResult
-    func saveImage(image: UIImage) -> String? {
-        guard let data = image.jpegData(compressionQuality: 1) ?? image.pngData() else {
-            return nil
         }
-        guard let directory = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) as NSURL else {
-            return nil
-        }
-        do {
-            let path = directory.appendingPathComponent("\(ObjectId.generate()).png")!
-            try data.write(to: path)
-            return path.absoluteString
-        } catch {
-            print(error.localizedDescription)
-            return nil
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                backButton
+            }
+            ToolbarItem(placement: .navigationBarLeading) {
+                Text(section.title)
+                    .font(Font.custom("Inter-Bold", size: 20))
+                    .multilineTextAlignment(.center)
+            }
         }
     }
     
-    func getSavedImage(named: String) -> UIImage? {
-        if let dir = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) {
-            return UIImage(contentsOfFile: URL(fileURLWithPath: dir.absoluteString).appendingPathComponent(named).path)
-        }
-        return nil
+    class ViewModel: ImageHelper, ObservableObject{
+        
     }
 }
 

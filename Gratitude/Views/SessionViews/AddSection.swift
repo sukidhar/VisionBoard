@@ -87,7 +87,7 @@ struct AddSection: View {
                 })
                 switch sectionUsage {
                 case .onboarding:
-                    stateManager.set(state: .homeView(user: user))
+                    stateManager.set(state: .homeView)
                 case .home:
                     presentationMode.wrappedValue.dismiss()
                 }

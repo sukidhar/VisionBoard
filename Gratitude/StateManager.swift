@@ -10,7 +10,7 @@ import RealmSwift
 
 enum AppState{
     case onboardingView
-    case homeView(user: User)
+    case homeView
 }
 
 class StateManager : ObservableObject{
@@ -21,8 +21,8 @@ class StateManager : ObservableObject{
     }
     
     func checkState(){
-        if let user = self.realm.objects(User.self).first{
-            self.state = .homeView(user: user)
+        if let _ = self.realm.objects(User.self).first{
+            self.state = .homeView
         }else{
             self.state = .onboardingView
         }
