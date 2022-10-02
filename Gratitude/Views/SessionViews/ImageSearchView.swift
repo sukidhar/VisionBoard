@@ -85,6 +85,7 @@ struct ImageSearchView: View {
     class ViewModel : ObservableObject{
         @Published var searchText = ""
         @Published var searchResultImages = [String]()
+        
     }
 }
 

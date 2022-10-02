@@ -1,0 +1,11 @@
+//
+//  ApiConfig.xcconfig
+//  Gratitude
+//
+//  Created by sukidhar on 02/10/22.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+"PEXELS_API_KEY" = "563492ad6f9170000100000115f7a86b94e84a88ab69555686929494"

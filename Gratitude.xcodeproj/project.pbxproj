@@ -52,6 +52,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A11E80828E94D6B007DB713 /* ApiConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ApiConfig.xcconfig; sourceTree = "<group>"; };
 		0A29FA1F28E6E78C0046DC40 /* Gratitude.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gratitude.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A29FA2228E6E78C0046DC40 /* GratitudeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GratitudeApp.swift; sourceTree = "<group>"; };
 		0A29FA2628E6E78D0046DC40 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -140,6 +141,7 @@
 				0A29FA6528E7272A0046DC40 /* Components */,
 				0A29FA2628E6E78D0046DC40 /* Assets.xcassets */,
 				0A29FA2828E6E78D0046DC40 /* Preview Content */,
+				0A11E80828E94D6B007DB713 /* ApiConfig.xcconfig */,
 			);
 			path = Gratitude;
 			sourceTree = "<group>";
