@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A11E80A28E954D0007DB713 /* PexelQueryResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A11E80928E954D0007DB713 /* PexelQueryResult.swift */; };
+		0A11E80C28E9603D007DB713 /* ShimmerModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A11E80B28E9603D007DB713 /* ShimmerModifier.swift */; };
+		0A11E81228E96BB6007DB713 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0A11E81128E96BB6007DB713 /* Kingfisher */; };
 		0A29FA2328E6E78C0046DC40 /* GratitudeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A29FA2228E6E78C0046DC40 /* GratitudeApp.swift */; };
 		0A29FA2728E6E78D0046DC40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A29FA2628E6E78D0046DC40 /* Assets.xcassets */; };
 		0A29FA2A28E6E78D0046DC40 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A29FA2928E6E78D0046DC40 /* Preview Assets.xcassets */; };
@@ -53,6 +56,8 @@
 
 /* Begin PBXFileReference section */
 		0A11E80828E94D6B007DB713 /* ApiConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ApiConfig.xcconfig; sourceTree = "<group>"; };
+		0A11E80928E954D0007DB713 /* PexelQueryResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PexelQueryResult.swift; sourceTree = "<group>"; };
+		0A11E80B28E9603D007DB713 /* ShimmerModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerModifier.swift; sourceTree = "<group>"; };
 		0A29FA1F28E6E78C0046DC40 /* Gratitude.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gratitude.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A29FA2228E6E78C0046DC40 /* GratitudeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GratitudeApp.swift; sourceTree = "<group>"; };
 		0A29FA2628E6E78D0046DC40 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -102,6 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A11E81228E96BB6007DB713 /* Kingfisher in Frameworks */,
 				0A29FA3428E6E95F0046DC40 /* RealmSwift in Frameworks */,
 				0A29FA3228E6E95F0046DC40 /* Realm in Frameworks */,
 			);
@@ -185,6 +191,7 @@
 				0A29FA6628E727550046DC40 /* FlowLayout.swift */,
 				0A29FA8828E896BA0046DC40 /* ImageGalleryView.swift */,
 				0A29FA8A28E8998F0046DC40 /* ImagePickerVIew.swift */,
+				0A11E80B28E9603D007DB713 /* ShimmerModifier.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -196,6 +203,7 @@
 				0A29FA7228E769C20046DC40 /* User.swift */,
 				0A29FA7428E76E0F0046DC40 /* Section.swift */,
 				0A29FA7628E76E2B0046DC40 /* VBImage.swift */,
+				0A11E80928E954D0007DB713 /* PexelQueryResult.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -250,6 +258,7 @@
 			packageProductDependencies = (
 				0A29FA3128E6E95F0046DC40 /* Realm */,
 				0A29FA3328E6E95F0046DC40 /* RealmSwift */,
+				0A11E81128E96BB6007DB713 /* Kingfisher */,
 			);
 			productName = Gratitude;
 			productReference = 0A29FA1F28E6E78C0046DC40 /* Gratitude.app */;
@@ -281,6 +290,7 @@
 			mainGroup = 0A29FA1628E6E78C0046DC40;
 			packageReferences = (
 				0A29FA3028E6E95F0046DC40 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				0A11E81028E96BB6007DB713 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 0A29FA2028E6E78C0046DC40 /* Products */;
 			projectDirPath = "";
@@ -336,6 +346,7 @@
 				0A29FA8128E8202F0046DC40 /* OnboardingView.swift in Sources */,
 				0A29FA6228E70EAE0046DC40 /* View+Extension.swift in Sources */,
 				0A29FA7128E7439E0046DC40 /* HomeView.swift in Sources */,
+				0A11E80C28E9603D007DB713 /* ShimmerModifier.swift in Sources */,
 				0A29FA6A28E732340046DC40 /* IdentifiableString.swift in Sources */,
 				0A29FA7F28E8023E0046DC40 /* StateManager.swift in Sources */,
 				0A29FA6028E7016A0046DC40 /* OnboardingUsername.swift in Sources */,
@@ -346,6 +357,7 @@
 				0A29FA7528E76E0F0046DC40 /* Section.swift in Sources */,
 				0A29FA6428E714960046DC40 /* OnboardingVisionBoardTitle.swift in Sources */,
 				0A29FA7328E769C20046DC40 /* User.swift in Sources */,
+				0A11E80A28E954D0007DB713 /* PexelQueryResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +366,7 @@
 /* Begin XCBuildConfiguration section */
 		0A29FA2B28E6E78D0046DC40 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0A11E80828E94D6B007DB713 /* ApiConfig.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -414,6 +427,7 @@
 		};
 		0A29FA2C28E6E78D0046DC40 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0A11E80828E94D6B007DB713 /* ApiConfig.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -550,6 +564,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		0A11E81028E96BB6007DB713 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 		0A29FA3028E6E95F0046DC40 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift";
@@ -561,6 +583,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		0A11E81128E96BB6007DB713 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0A11E81028E96BB6007DB713 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
 		0A29FA3128E6E95F0046DC40 /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 0A29FA3028E6E95F0046DC40 /* XCRemoteSwiftPackageReference "realm-swift" */;
