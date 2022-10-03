@@ -33,4 +33,4 @@ Section 8: Section detail page with attached images
 
 6) Some ViewModel classes have no implementation as they could be used for future needs.
 
-7) Initially, I removed the API key, but then to test it out on your device, It is necessary, hence i then force pushed it by ignoring the git ignore/
+7) Initially, I removed the API key, but then to test it out on your device, It is necessary, hence i then force pushed it by ignoring the git ignore
