@@ -32,3 +32,5 @@ Section 8: Section detail page with attached images
 5) RealmSwift has notable issue which has not been resolved in Xcode 14.1 stable version. The issue is "Publishing changes from within view updates is not allowed, this will cause undefined behaviour". This issue seems to be resolved in Xcode 14.1 Beta 3. If you encounter this, it is safe to ignore. However i have skipped some MVVM architecture to avoid this bug which seems to have occurance on a complete constraint to MVVM architecture.
 
 6) Some ViewModel classes have no implementation as they could be used for future needs.
+
+7) Initially, I removed the API key, but then to test it out on your device, It is necessary, hence i then force pushed it by ignoring the git ignore/
