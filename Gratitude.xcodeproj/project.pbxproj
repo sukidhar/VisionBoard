@@ -143,8 +143,6 @@
 				0A29FA7E28E8023E0046DC40 /* StateManager.swift */,
 				0A29FA6D28E7413C0046DC40 /* Views */,
 				0A29FA6828E7321B0046DC40 /* Models */,
-				0A29FA6128E70EAE0046DC40 /* View+Extension.swift */,
-				0A29FA8228E83B970046DC40 /* UINavigationController+Extension.swift */,
 				0A29FA6528E7272A0046DC40 /* Components */,
 				0A29FA2628E6E78D0046DC40 /* Assets.xcassets */,
 				0A29FA2828E6E78D0046DC40 /* Preview Content */,
@@ -189,6 +187,8 @@
 		0A29FA6528E7272A0046DC40 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				0A29FA6128E70EAE0046DC40 /* View+Extension.swift */,
+				0A29FA8228E83B970046DC40 /* UINavigationController+Extension.swift */,
 				0A29FA8428E842A50046DC40 /* NavigationButtonStyle.swift */,
 				0A29FA6628E727550046DC40 /* FlowLayout.swift */,
 				0A29FA8828E896BA0046DC40 /* ImageGalleryView.swift */,

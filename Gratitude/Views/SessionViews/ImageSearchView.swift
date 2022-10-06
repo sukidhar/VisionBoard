@@ -131,6 +131,9 @@ struct ImageSearchView: View {
                                     Spacer(minLength: 0)
                                     Button {
                                         let realm = stateManger.realm
+                                            try? realm.write({
+                                                $section.images.wrappedValue = .init()
+                                            })
                                             viewModel.selectedImages.forEach { image in
                                                 try? realm.write({
                                                     $section.images.append(image)
@@ -170,9 +173,11 @@ struct ImageSearchView: View {
         })
         .fullScreenCover(isPresented: $isPresentingCamera, content: {
             ImagePickerView(capturedImage: $newImage)
+                .edgesIgnoringSafeArea(.all)
         })
         .fullScreenCover(isPresented: $isPresentingGallery, content: {
             ImageGalleryView(images: $galleryImages, limit: 5 - viewModel.selectedImages.count)
+                .edgesIgnoringSafeArea(.all)
         })
         .edgesIgnoringSafeArea(.bottom)
         .navigationBarTitleDisplayMode(.inline)
