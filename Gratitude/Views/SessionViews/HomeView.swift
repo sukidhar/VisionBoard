@@ -44,9 +44,6 @@ struct HomeView: View {
                                         Spacer()
                                         NavigationLink {
                                             SectionView(section: section)
-                                                .onAppear{
-                                                    print(section)
-                                                }
                                         } label: {
                                             Image("Pencil")
                                         }

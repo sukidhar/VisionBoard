@@ -13,6 +13,10 @@ struct SectionView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var stateManager : StateManager
     
+    @State var isPresentingCaptionEditor = false
+    @State var currentCaptionIndex = 0
+    @State var captionString = ""
+    
     var backButton : some View {
         Button {
             presentationMode.wrappedValue.dismiss()
@@ -53,8 +57,8 @@ struct SectionView: View {
                     GeometryReader{ geometry in
                         ScrollView{
                             LazyVStack(spacing: 20){
-                                ForEach(section.images) {
-                                    image in
+                                ForEach(Array(section.images.enumerated()), id: \.1) {
+                                    (index,image) in
                                     VStack{
                                         GeometryReader{ innergeo in
                                             ZStack{
@@ -63,8 +67,10 @@ struct SectionView: View {
                                                         Image(uiImage: image)
                                                             .resizable()
                                                             .scaledToFill()
-                                                            .frame(height: 150)
+                                                            .frame(height: 160)
+                                                            .contentShape(Rectangle())
                                                             .cornerRadius(12)
+                                                            .clipped()
                                                     }
                                                 }
                                                 else{
@@ -73,10 +79,13 @@ struct SectionView: View {
                                                             .resizable()
                                                             .scaledToFill()
                                                             .frame(height: 160)
+                                                            .contentShape(Rectangle())
                                                             .cornerRadius(12)
+                                                            .clipped()
                                                     }
                                                 }
                                             }
+                                            .clipped()
                                             .padding(.horizontal, 24)
                                             .padding(.vertical, 5)
                                             .overlay {
@@ -104,14 +113,38 @@ struct SectionView: View {
                                                 .position(.init(x: innergeo.frame(in: .local).width - 26, y: innergeo.frame(in: .local).minX + 7))
                                             }
                                         }
-                                        .frame(height: 160)
+                                        .frame(height: 170)
                                         
-                                        Text("Add a caption")
-                                            .font(Font.custom("Inter-Regular", size: 14))
-                                            .foregroundColor(Color("SectionSecondaryAccent"))
-                                            .multilineTextAlignment(.center)
-                                            .padding(.horizontal, 24)
-                                            .padding(.vertical, 6)
+                                        HStack{
+                                            if image.caption.isEmpty{
+                                                Text("Add a caption")
+                                                    .font(Font.custom("Inter-Regular", size: 14))
+                                                    .foregroundColor(Color("SectionSecondaryAccent"))
+                                                    .zIndex(.greatestFiniteMagnitude)
+                                                    .onTapGesture(count: 1) {
+                                                        self.isPresentingCaptionEditor = true
+                                                        self.currentCaptionIndex = index
+                                                    }
+                                            }else{
+                                                HStack{
+                                                    Text(image.caption)
+                                                        .font(Font.custom("Inter-Regular", size: 14))
+                                                    Spacer(minLength: 0)
+                                                    Button {
+                                                        self.isPresentingCaptionEditor = true
+                                                        self.currentCaptionIndex = index
+                                                    } label: {
+                                                        Image("Pencil")
+                                                            .resizable()
+                                                            .aspectRatio(1, contentMode: .fit)
+                                                            .frame(width: 14, height: 14, alignment: .center)
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        .multilineTextAlignment(.center)
+                                        .padding(.horizontal, 24)
+                                        .padding(.vertical, 6)
                                     }
                                 }
                             }
@@ -153,7 +186,69 @@ struct SectionView: View {
                     .multilineTextAlignment(.center)
             }
         }
+        .bottomSheet(showSheet: $isPresentingCaptionEditor) {
+            SheetView(captionString: $captionString) {
+                captionString = section.images[currentCaptionIndex].caption
+            } doneAction: {
+                let realm = stateManager.realm
+                try? realm.write({
+                    guard let image = section.images[currentCaptionIndex].thaw() else {
+                       return
+                    }
+                    image.caption = captionString
+                })
+                captionString = ""
+            }
+
+        }
     }
+    
+    struct SheetView : View{
+        @Environment(\.presentationMode) var presentationMode
+        @Binding var captionString : String
+        let onAppear: ()->Void
+        let doneAction: ()->Void
+        var body: some View {
+            VStack(spacing: 20){
+                HStack{
+                    Text("""
+                         Every photo has an origin 🌄
+                         """)
+                    .multilineTextAlignment(.leading)
+                    .lineSpacing(5)
+                    .font(Font.custom("Inter-Bold", size: 20))
+                    Spacer(minLength: 0)
+                }
+                ZStack{
+                    if captionString.isEmpty{
+                        Text("Write your story..")
+                            .font(Font.custom("Inter-Regular", size: 14))
+                            .foregroundColor(Color("SectionSecondaryAccent"))
+                    }
+                    TextEditor(text: $captionString)
+                        .background {
+                            Color.secondary.opacity(0.2)
+                        }
+                        .cornerRadius(10)
+                }
+                Button {
+                    doneAction()
+                    presentationMode.wrappedValue.dismiss()
+                } label: {
+                    Text("Done")
+                }
+                .buttonStyle(NavigationButtonStyle())
+            }
+            .padding(.horizontal, 24)
+            .padding(.top, 24)
+            .onAppear {
+                UITextView.appearance().backgroundColor = .clear
+                onAppear()
+            }
+        }
+    }
+    
+   
     
     class ViewModel: ImageHelper, ObservableObject{
         

@@ -132,15 +132,15 @@ struct ImageSearchView: View {
                                     Spacer(minLength: 0)
                                     Button {
                                         let realm = stateManger.realm
+                                        try? realm.write({
+                                            $section.images.wrappedValue = .init()
+                                        })
+                                        viewModel.selectedImages.forEach { image in
                                             try? realm.write({
-                                                $section.images.wrappedValue = .init()
+                                                $section.images.append(image)
                                             })
-                                            viewModel.selectedImages.forEach { image in
-                                                try? realm.write({
-                                                    $section.images.append(image)
-                                                })
-                                            }
-                                            try? realm.commitWrite()
+                                        }
+                                        try? realm.commitWrite()
                                         presentationMode.wrappedValue.dismiss()
                                     } label: {
                                         Image("ArrowCircleRight")
