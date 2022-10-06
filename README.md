@@ -24,12 +24,10 @@ Section 8: Section detail page with attached images
 
 1) The app keeps the memory and disk usage at the max at 500mb.. Only incase of the image search using Pexels API which requires to download and cache the images to keep the network usage minimal. Kingfisher module has been used to do so
 
-2) The caption input is ambiguous and hence is not implemented until further update on this
+2) I have implemented pagination, I dont know if its necessary but I did implement pagination as well as shimmer for images while they load.
 
-3) I have implemented pagination, I dont know if its necessary but I did implement pagination as well as shimmer for images while they load.
+3) RealmSwift has notable issue which has not been resolved in Xcode 14.1 stable version. The issue is "Publishing changes from within view updates is not allowed, this will cause undefined behaviour". This issue seems to be resolved in Xcode 14.1 Beta 3. If you encounter this, it is safe to ignore. However i have skipped some MVVM architecture to avoid this bug which seems to have occurance on a complete constraint to MVVM architecture.
 
-4) RealmSwift has notable issue which has not been resolved in Xcode 14.1 stable version. The issue is "Publishing changes from within view updates is not allowed, this will cause undefined behaviour". This issue seems to be resolved in Xcode 14.1 Beta 3. If you encounter this, it is safe to ignore. However i have skipped some MVVM architecture to avoid this bug which seems to have occurance on a complete constraint to MVVM architecture.
+4) Some ViewModel classes have no implementation as they could be used for future needs.
 
-5) Some ViewModel classes have no implementation as they could be used for future needs.
-
-6) Initially, I removed the API key, but then to test it out on your device, It is necessary, hence i then force pushed it by ignoring the git ignore
+5) Initially, I removed the API key, but then to test it out on your device, It is necessary, hence i then force pushed it by ignoring the git ignore
