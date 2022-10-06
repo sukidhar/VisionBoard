@@ -13,6 +13,7 @@ import Kingfisher
 
 struct ImageSearchView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @Environment(\.colorScheme) var colorScheme
     
     @StateObject var viewModel = ViewModel()
     
@@ -202,7 +203,12 @@ struct ImageSearchView: View {
                     }
                 }
                 .background {
-                    Color("SearchFieldBG")
+                    if colorScheme == .light{
+                        Color("SearchFieldBG")
+                    }else{
+                        Color.white
+                            .opacity(0.3)
+                    }
                 }
                 .cornerRadius(4)
             }
@@ -213,7 +219,16 @@ struct ImageSearchView: View {
                     Image("Camera")
                         .padding(9)
                         .background {
-                            Color("SearchFieldBG")
+                            if colorScheme == .light{
+                                Color("SearchFieldBG")
+                            }else{
+                                if colorScheme == .light{
+                                    Color("SearchFieldBG")
+                                }else{
+                                    Color.white
+                                        .opacity(0.3)
+                                }
+                            }
                         }
                         .cornerRadius(4)
                         .padding(.leading, -9)
@@ -347,6 +362,7 @@ struct ImageSearchView_Previews: PreviewProvider {
         NavigationView {
             ImageSearchView(section: .init())
                 .environmentObject(StateManager())
+                .preferredColorScheme(.dark)
         }
     }
 }

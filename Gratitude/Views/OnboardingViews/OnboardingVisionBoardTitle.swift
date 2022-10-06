@@ -51,7 +51,7 @@ struct OnboardingVisionBoardTitle: View {
                     viewModel.boardTitle = title.text
                 } label: {
                     Text(title.text)
-                        .foregroundColor(.primary)
+                        .foregroundColor(.black)
                         .font(Font.custom("Inter-Regular", size: 12))
                         .padding()
                         .background(Capsule().fill(Color("VBSTColor")))
@@ -95,6 +95,7 @@ struct InputVBTitle_Previews: PreviewProvider {
         NavigationView {
             OnboardingVisionBoardTitle()
                 .environmentObject(OnboardingView.ViewModel())
+                .preferredColorScheme(.dark)
         }
     }
 }
